@@ -1,3 +1,4 @@
+import urllib.request
 from io import StringIO
 from html.parser import HTMLParser
 
@@ -17,3 +18,12 @@ def strip_tags(html):
     s = MLStripper()
     s.feed(html)
     return s.get_data()
+    
+
+
+print('Beginning file download with urllib2...') 
+
+urllib.request.urlretrieve("https://www.g7website.com/website-categories/html-websites.html", "data.html")
+
+with open("./data.html","r+") as data:
+    strip_tags(data).read()
